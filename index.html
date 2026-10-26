@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <?!= include('Styles'); ?>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home">📌 Your Feedback Matters</a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#gallery">Reviews</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero and feedback form -->
+    <section class="hero" id="home">
+      <div class="intro">
+        <span class="eyebrow">A LITTLE NOTE FROM US ✨</span>
+
+        <h1>We Value<br>Your Feedback</h1>
+
+        <p>
+          Every experience matters. Share your thoughts and
+          help us make things even better.
+        </p>
+
+        <div class="doodle">Your voice makes us better ♡</div>
+
+        <a class="text-link" href="#gallery">
+          Read customer notes ↓
+        </a>
+      </div>
+
+      <form id="feedbackForm" class="note form-note">
+        <span class="form-pin" aria-hidden="true">📌</span>
+
+        <h2>Rate Your Experience</h2>
+
+        <p class="muted">
+          How was your overall experience today?
+        </p>
+
+        <!-- Five emoji ratings -->
+        <div class="rating-options"
+             role="group"
+             aria-label="Rate your experience">
+
+          <button type="button" class="face"
+                  data-rating="1" aria-pressed="false">
+            <span>😞</span>
+            <small>Terrible</small>
+          </button>
+
+          <button type="button" class="face"
+                  data-rating="2" aria-pressed="false">
+            <span>🙁</span>
+            <small>Bad</small>
+          </button>
+
+          <button type="button" class="face"
+                  data-rating="3" aria-pressed="false">
+            <span>😐</span>
+            <small>Okay</small>
+          </button>
+
+          <button type="button" class="face"
+                  data-rating="4" aria-pressed="false">
+            <span>🙂</span>
+            <small>Good</small>
+          </button>
+
+          <button type="button" class="face"
+                  data-rating="5" aria-pressed="false">
+            <span>😄</span>
+            <small>Excellent</small>
+          </button>
+        </div>
+
+        <label for="customerName">Your name (optional)</label>
+        <input id="customerName"
+               name="customerName"
+               type="text"
+               maxlength="80"
+               autocomplete="name"
+               placeholder="What should we call you?">
+
+        <label for="comment">Describe your experience</label>
+        <textarea id="comment"
+                  name="comment"
+                  maxlength="1500"
+                  rows="4"
+                  required
+                  placeholder="We'd love to hear your thoughts..."></textarea>
+
+        <label class="check-row" for="contactRequested">
+          <input id="contactRequested"
+                 name="contactRequested"
+                 type="checkbox">
+          <span>
+            I would like to be contacted about my feedback.
+          </span>
+        </label>
+
+        <button type="submit"
+                id="submitButton"
+                class="submit-btn">
+          Submit Feedback →
+        </button>
+
+        <p id="formMessage"
+           class="form-message"
+           role="status"
+           aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Customer review gallery -->
+    <section id="gallery" class="gallery-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">KIND WORDS & HONEST THOUGHTS</span>
+          <h2>Customer Notes</h2>
+          <p>Every note tells a story.</p>
+        </div>
+
+        <div class="gallery-caption">
+          Pinned with appreciation ♡
+        </div>
+      </div>
+
+      <div id="reviewGallery" class="review-grid">
+        <p class="muted">Loading customer reviews...</p>
+      </div>
+
+      <p id="galleryStatus"
+         class="gallery-status"
+         role="status"
+         aria-live="polite"></p>
+    </section>
+
+    <!-- Shown after successful submission -->
+    <section id="thankYou" class="thank-you" hidden>
+      <div class="thank-note">
+        <span class="thank-icon">💛</span>
+        <h2>Thank You!</h2>
+        <p>
+          Your feedback means a lot to us.
+          Thank you for helping us grow.
+        </p>
+
+        <button type="button"
+                id="backButton"
+                class="submit-btn">
+          Back to Feedback
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made with care, inspired by you ♡
+  </footer>
+
+  <?!= include('JavaScript'); ?>
+</body>
+</html>
