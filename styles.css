@@ -1,0 +1,540 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --paper: #fffdf5;
+  --cream: #f7f0df;
+  --yellow: #ffe16a;
+  --gold: #e9ad20;
+  --brown: #513a29;
+  --ink: #33271e;
+  --muted: #807365;
+  --line: #e6d5a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 25px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: radial-gradient(#d7c9ad .8px, transparent .8px);
+  background-size: 23px 23px;
+  font-family: 'Nunito', sans-serif;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #9a6b12;
+  outline-offset: 3px;
+}
+
+/* Navigation */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 6%;
+  background: rgba(255,253,245,.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+nav a:hover, .text-link:hover {
+  color: #a87509;
+}
+
+/* Hero section */
+
+.hero {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 75px 28px 90px;
+}
+
+.intro h1 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(48px, 6vw, 78px);
+  line-height: .98;
+  margin: 18px 0;
+  color: var(--brown);
+}
+
+.intro p {
+  max-width: 370px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.eyebrow {
+  color: #a87509;
+  letter-spacing: 1.6px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.doodle {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 24px;
+  margin: 30px 0 22px;
+  transform: rotate(-3deg);
+}
+
+.text-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* Feedback sticky note */
+
+.note {
+  position: relative;
+  background: linear-gradient(145deg, #fff6bc, #ffe16a);
+  border: 2px solid #dfb93e;
+  border-radius: 5px 9px 4px 8px;
+  box-shadow: 5px 7px 0 #e6d4a3, 0 15px 30px #4f381511;
+}
+
+.form-note {
+  padding: 38px 32px 25px;
+  transform: rotate(.3deg);
+}
+
+.form-pin {
+  position: absolute;
+  top: -29px;
+  left: 46%;
+  font-size: 35px;
+  transform: rotate(-12deg);
+  filter: drop-shadow(1px 3px 1px #6d452c55);
+}
+
+h2 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 35px;
+  margin: 0 0 8px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Emoji ratings */
+
+.rating-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin: 24px 0 28px;
+}
+
+.face {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 3px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+
+.face span {
+  font-size: clamp(25px, 3vw, 37px);
+  filter: grayscale(.1);
+}
+
+.face small {
+  font-size: 11px;
+}
+
+.face:hover {
+  transform: translateY(-4px);
+}
+
+.face.selected {
+  background: #fff9dc;
+  border-color: #d9a321;
+  box-shadow: 0 4px 0 #e9c75f;
+  transform: translateY(-4px);
+}
+
+/* Form inputs */
+
+.form-note > label:not(.check-row) {
+  display: block;
+  margin: 15px 0 7px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+input:not([type="checkbox"]), textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d4c7a4;
+  border-radius: 4px;
+  background: #fffef9;
+  color: var(--ink);
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #b88a17;
+  box-shadow: 0 0 0 3px #e9ad202b;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.check-row {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 18px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.check-row input {
+  margin-top: 4px;
+  accent-color: #b88a17;
+}
+
+.submit-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 2px solid #c99010;
+  border-radius: 5px;
+  background: #ffca42;
+  color: #382716;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #d6a22e;
+  transition: transform .2s, background .2s;
+}
+
+.submit-btn:hover {
+  background: #ffdb67;
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: .6;
+  cursor: wait;
+  transform: none;
+}
+
+.form-message, .gallery-status {
+  min-height: 18px;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Gallery section */
+
+.gallery-section {
+  padding: 65px 6% 80px;
+  background: rgba(255,249,232,.96);
+  border-top: 1px solid #eadbb7;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 35px;
+}
+
+.section-heading h2 {
+  font-size: 45px;
+  margin: 8px 0 0;
+}
+
+.section-heading p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.gallery-caption {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 21px;
+  transform: rotate(-2deg);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 34px 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Customer sticky-note cards */
+
+.review-card {
+  position: relative;
+  min-width: 0;
+  margin-top: 32px;
+  padding: 43px 22px 22px;
+  background: linear-gradient(145deg, #fff5ae, #ffe16a);
+  border: 2px solid #e2bd46;
+  border-radius: 5px;
+  box-shadow: 4px 6px 0 #e5d3a6;
+  overflow-wrap: anywhere;
+  animation: arrive .35s ease both;
+}
+
+/* Exactly one large push pin per gallery card */
+
+.review-pin {
+  position: absolute;
+  top: -39px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-12deg);
+  font-size: 66px;
+  line-height: 1;
+  z-index: 2;
+  filter: drop-shadow(2px 5px 2px #513a2940);
+  pointer-events: none;
+  user-select: none;
+}
+
+.review-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.review-name {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.review-mood {
+  flex-shrink: 0;
+  font-size: 26px;
+}
+
+.review-stars {
+  color: #b87900;
+  letter-spacing: 3px;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.review-comment {
+  margin: 8px 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.review-date {
+  margin-top: 15px;
+  padding-top: 9px;
+  border-top: 1px dashed #d5b64f;
+  color: #786343;
+  font-size: 11px;
+}
+
+/* Thank-you screen */
+
+.thank-you {
+  padding: 65px 20px;
+  background: linear-gradient(120deg, #ffe780, #fff1ad);
+  text-align: center;
+}
+
+.thank-note {
+  max-width: 500px;
+  margin: auto;
+  padding: 38px 25px;
+  background: #fff8cc;
+  border: 2px solid #e4c14d;
+  box-shadow: 5px 6px 0 #dfc87c;
+  transform: rotate(-1deg);
+}
+
+.thank-icon {
+  font-size: 48px;
+}
+
+.thank-note h2 {
+  font-size: 45px;
+}
+
+.thank-note p {
+  line-height: 1.7;
+}
+
+footer {
+  padding: 22px;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  background: var(--paper);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 55px 22px 70px;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .intro p {
+    margin-inline: auto;
+  }
+
+  .doodle {
+    margin-top: 20px;
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-section {
+    padding-inline: 22px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 17px 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .form-note {
+    padding: 34px 16px 22px;
+  }
+
+  .rating-options {
+    gap: 1px;
+  }
+
+  .face {
+    padding-inline: 1px;
+  }
+
+  .face small {
+    font-size: 9px;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 38px;
+  }
+
+  .gallery-caption {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
