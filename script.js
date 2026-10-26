@@ -314,3 +314,6 @@
   }, 15000);
 })();
 </script>
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbx2sy4vUTtTSb9SNoibN4Jx4Ou7ptTlKSwDhPcQ0nZUew_q3IazkrX2SvnU3KmJD1HJkw/exec";
