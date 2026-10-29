@@ -1,172 +1,67 @@
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <base target="_top">
-  <?!= include('Styles'); ?>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fffdf6" />
+  <meta name="description" content="Share a note about your experience and help us make things even better." />
+  <title>Your Feedback Matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#fffdf6;--cream:#fff9e9;--ink:#38251e;--muted:#796b5e;--line:#ead5a7;--yellow:#ffe989;--gold:#e6a826;--orange:#f5b632;--red:#d83956;--shadow:0 3px 10px #60451c24}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}button,input,textarea{font:inherit}
+    .topbar{height:40px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px;font-weight:700;font-size:13px;gap:9px}.pin{color:var(--red);font-size:19px;transform:rotate(28deg);display:inline-block}
+    .hero{min-height:450px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr minmax(230px,310px) minmax(300px,400px) 1fr;align-items:center;gap:34px;padding:38px 7vw}
+    .intro{grid-column:2;max-width:310px}.eyebrow{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#a27728;font-weight:700;margin:0 0 15px}.intro h1{font-family:'Patrick Hand',cursive;font-size:43px;line-height:.94;letter-spacing:-.03em;margin:0 0 17px}.intro p{font-size:12px;line-height:1.8;color:#6d5e51;margin:0 0 26px;max-width:280px}.script{font-family:'Patrick Hand',cursive;font-size:16px;margin:0 0 5px}.tiny{font-size:9px;color:var(--muted)}
+    .form-card{grid-column:3;position:relative;background:var(--yellow);border:1px solid #e0ae38;border-radius:4px;padding:24px 22px 21px;box-shadow:var(--shadow);max-width:400px;width:100%;justify-self:center}.form-card:before{content:'📌';position:absolute;font-size:24px;top:-14px;left:50%;transform:rotate(18deg)}.form-card h2{font-family:'Patrick Hand',cursive;font-size:23px;margin:0 0 3px}.hint{font-size:9px;color:#887346;margin:0 0 17px}.rating{display:flex;justify-content:space-between;gap:8px;margin:0 0 18px}.rating label{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;flex:1;font-size:9px;color:#594b3c}.rating input{position:absolute;opacity:0}.face{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:#f5b44d;border:2px solid transparent;transition:.15s}.rating input:checked+.face{border-color:#8b5a13;box-shadow:0 0 0 3px #fff8d5}.rating label:hover .face{transform:translateY(-2px)}.field{display:block;margin:12px 0 0;font-size:10px;font-weight:700}.field input,.field textarea{display:block;width:100%;margin-top:6px;border:1px solid #d8c9a6;background:#fffefb;padding:10px 11px;outline:none;font-size:11px;border-radius:2px;color:var(--ink)}.field input:focus,.field textarea:focus{border-color:#c88c1d;box-shadow:0 0 0 2px #e8b83b38}.field textarea{resize:vertical;min-height:86px}.consent{display:flex;align-items:center;gap:7px;font-size:9px;color:#655738;margin:13px 0}.consent input{accent-color:#b77d16}.submit{background:#ffbf3f;border:1px solid #cf8c12;box-shadow:0 2px 0 #bf8118;color:#332219;padding:10px 13px;font-weight:700;font-size:10px;cursor:pointer;border-radius:3px}.submit:hover{background:#ffc956;transform:translateY(-1px)}.message{font-size:10px;margin:12px 0 0;min-height:13px;color:#4e6d36}
+    .notes{background:var(--cream);min-height:370px;padding:48px 7vw 30px;position:relative}.notes-head{max-width:540px;margin:0 auto 35px}.notes-head .eyebrow{margin-bottom:9px}.notes h2{font-family:'Patrick Hand',cursive;font-size:25px;margin:0 0 7px}.notes-head p{font-size:10px;color:var(--muted);margin:0}.pinned-note{position:absolute;right:7vw;top:96px;font-family:'Patrick Hand',cursive;font-size:12px}.note-grid{max-width:540px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}.note{position:relative;background:var(--yellow);border:1px solid #dfa824;border-radius:3px;padding:22px 15px 13px;box-shadow:var(--shadow);min-height:126px}.note:before{content:'📌';position:absolute;top:-19px;left:42%;font-size:24px;transform:rotate(26deg)}.note-top{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:10px}.note-stars{color:#c78712;letter-spacing:1px;font-size:12px;margin:9px 0}.note p{font-size:10px;line-height:1.55;margin:0 0 10px}.note time{display:block;border-top:1px dashed #c8a652;padding-top:8px;font-size:8px;color:#796b5e}.empty{grid-column:1/-1;text-align:center;color:#9b8a72;font-size:11px;padding:15px}.footer{position:absolute;bottom:20px;right:7vw;font-family:'Patrick Hand',cursive;font-size:13px}.copyright{position:absolute;bottom:25px;left:7vw;font-size:8px;color:#8d806d}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;gap:32px;padding:52px 7vw}.intro,.form-card{grid-column:1;justify-self:center;width:min(100%,420px)}.intro{max-width:420px}.intro h1{font-size:39px}.notes{padding:38px 7vw 65px}.notes-head{margin-bottom:30px}.pinned-note{position:static;text-align:right;margin:-14px 0 25px}.copyright{left:7vw;bottom:18px}.footer{right:7vw;bottom:18px}}
+  </style>
 </head>
-
 <body>
-  <header class="topbar">
-    <a class="brand" href="#home">📌 Your Feedback Matters</a>
-
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#feedback">Feedback</a>
-      <a href="#gallery">Reviews</a>
-    </nav>
-  </header>
-
+  <header class="topbar"><span class="pin">📌</span><span>Your Feedback Matters</span></header>
   <main>
-    <!-- Hero and feedback form -->
-    <section class="hero" id="home">
-      <div class="intro">
-        <span class="eyebrow">A LITTLE NOTE FROM US ✨</span>
-
-        <h1>We Value<br>Your Feedback</h1>
-
-        <p>
-          Every experience matters. Share your thoughts and
-          help us make things even better.
-        </p>
-
-        <div class="doodle">Your voice makes us better ♡</div>
-
-        <a class="text-link" href="#gallery">
-          Read customer notes ↓
-        </a>
-      </div>
-
-      <form id="feedbackForm" class="note form-note">
-        <span class="form-pin" aria-hidden="true">📌</span>
-
-        <h2>Rate Your Experience</h2>
-
-        <p class="muted">
-          How was your overall experience today?
-        </p>
-
-        <!-- Five emoji ratings -->
-        <div class="rating-options"
-             role="group"
-             aria-label="Rate your experience">
-
-          <button type="button" class="face"
-                  data-rating="1" aria-pressed="false">
-            <span>😞</span>
-            <small>Terrible</small>
-          </button>
-
-          <button type="button" class="face"
-                  data-rating="2" aria-pressed="false">
-            <span>🙁</span>
-            <small>Bad</small>
-          </button>
-
-          <button type="button" class="face"
-                  data-rating="3" aria-pressed="false">
-            <span>😐</span>
-            <small>Okay</small>
-          </button>
-
-          <button type="button" class="face"
-                  data-rating="4" aria-pressed="false">
-            <span>🙂</span>
-            <small>Good</small>
-          </button>
-
-          <button type="button" class="face"
-                  data-rating="5" aria-pressed="false">
-            <span>😄</span>
-            <small>Excellent</small>
-          </button>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="intro"><p class="eyebrow">A little note from us</p><h1 id="hero-title">We Value<br>Your Feedback</h1><p>Every experience matters. Share your thoughts and help us make things even better.</p><p class="script">Your voice makes us better ♡</p><span class="tiny">Thank you for sharing!</span></div>
+      <form class="form-card" id="feedback-form">
+        <h2>Rate Your Experience</h2><p class="hint">How was your overall experience today?</p>
+        <div class="rating" role="radiogroup" aria-label="Your rating">
+          <label><input type="radio" name="rating" value="1" required><span class="face">😞</span><span>Not like</span></label>
+          <label><input type="radio" name="rating" value="2"><span class="face">😕</span><span>Bad</span></label>
+          <label><input type="radio" name="rating" value="3"><span class="face">😐</span><span>Okay</span></label>
+          <label><input type="radio" name="rating" value="4"><span class="face">🙂</span><span>Good</span></label>
+          <label><input type="radio" name="rating" value="5"><span class="face">😍</span><span>Perfect</span></label>
         </div>
-
-        <label for="customerName">Your name (optional)</label>
-        <input id="customerName"
-               name="customerName"
-               type="text"
-               maxlength="80"
-               autocomplete="name"
-               placeholder="What should we call you?">
-
-        <label for="comment">Describe your experience</label>
-        <textarea id="comment"
-                  name="comment"
-                  maxlength="1500"
-                  rows="4"
-                  required
-                  placeholder="We'd love to hear your thoughts..."></textarea>
-
-        <label class="check-row" for="contactRequested">
-          <input id="contactRequested"
-                 name="contactRequested"
-                 type="checkbox">
-          <span>
-            I would like to be contacted about my feedback.
-          </span>
-        </label>
-
-        <button type="submit"
-                id="submitButton"
-                class="submit-btn">
-          Submit Feedback →
-        </button>
-
-        <p id="formMessage"
-           class="form-message"
-           role="status"
-           aria-live="polite"></p>
+        <label class="field">Your name (optional)<input name="name" maxlength="50" placeholder="What should we call you?"></label>
+        <label class="field">Describe your experience<textarea name="comment" maxlength="500" placeholder="We'd love to hear your thoughts..." required></textarea></label>
+        <label class="consent"><input type="checkbox" name="consent"> I would like to be contacted about my feedback</label>
+        <button class="submit" type="submit">Submit Feedback →</button><p class="message" id="message" aria-live="polite"></p>
       </form>
     </section>
-
-    <!-- Customer review gallery -->
-    <section id="gallery" class="gallery-section">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">KIND WORDS & HONEST THOUGHTS</span>
-          <h2>Customer Notes</h2>
-          <p>Every note tells a story.</p>
-        </div>
-
-        <div class="gallery-caption">
-          Pinned with appreciation ♡
-        </div>
-      </div>
-
-      <div id="reviewGallery" class="review-grid">
-        <p class="muted">Loading customer reviews...</p>
-      </div>
-
-      <p id="galleryStatus"
-         class="gallery-status"
-         role="status"
-         aria-live="polite"></p>
-    </section>
-
-    <!-- Shown after successful submission -->
-    <section id="thankYou" class="thank-you" hidden>
-      <div class="thank-note">
-        <span class="thank-icon">💛</span>
-        <h2>Thank You!</h2>
-        <p>
-          Your feedback means a lot to us.
-          Thank you for helping us grow.
-        </p>
-
-        <button type="button"
-                id="backButton"
-                class="submit-btn">
-          Back to Feedback
-        </button>
-      </div>
+    <section class="notes" aria-labelledby="notes-title">
+      <div class="notes-head"><p class="eyebrow">Kind words & honest thoughts</p><h2 id="notes-title">Customer Notes</h2><p>Every note tells a story.</p></div>
+      <div class="pinned-note">Pinned with appreciation ♡</div>
+      <div class="note-grid" id="note-grid"></div>
+      <span class="copyright">1 visitor submission · Updated just now</span>
+      <div class="footer">Made with care. Inspired by you ♡</div>
     </section>
   </main>
-
-  <footer>
-    Made with care, inspired by you ♡
-  </footer>
-
-  <?!= include('JavaScript'); ?>
+  <script>
+    const example = {name:'JEEVA RAJ', rating:5, comment:'Well done application is very good', date:'Oct 26, 2026'};
+    const key = 'your-feedback-matters-notes';
+    const grid = document.getElementById('note-grid');
+    function render(){
+      let notes=[]; try{notes=JSON.parse(localStorage.getItem(key)||'[]')}catch{}
+      const all=[...notes,example];
+      grid.innerHTML=all.map(n=>`<article class="note"><div class="note-top"><span>${escapeHtml(n.name||'A FRIEND')}</span><span aria-label="${n.rating} out of 5">${['😞','😕','😐','🙂','😍'][n.rating-1]}</span></div><div class="note-stars">${'★'.repeat(n.rating)}${'☆'.repeat(5-n.rating)}</div><p>${escapeHtml(n.comment)}</p><time>${escapeHtml(n.date)}</time></article>`).join('');
+    }
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    document.getElementById('feedback-form').addEventListener('submit',e=>{
+      e.preventDefault();const data=new FormData(e.currentTarget);const rating=Number(data.get('rating'));if(!rating){document.getElementById('message').textContent='Please choose a rating first.';return}
+      const notes=JSON.parse(localStorage.getItem(key)||'[]');notes.unshift({name:data.get('name').trim()||'A FRIEND',rating,comment:data.get('comment').trim(),date:new Date().toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})});localStorage.setItem(key,JSON.stringify(notes.slice(0,12)));e.currentTarget.reset();document.getElementById('message').textContent='Thank you! Your note has been added below.';render();
+    });render();
+  </script>
 </body>
 </html>
